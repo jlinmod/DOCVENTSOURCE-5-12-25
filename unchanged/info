@@ -3,25 +3,26 @@ for DOC vent source 5-12-25
 cd /mnt/lustre/letscher/jsl1063
 cp -R /mnt/lustre/letscher/shared/my_cesm_sandbox /mnt/lustre/letscher/jsl1063/my_cesm_sandbox_invent
 
-YAML
-  diagnostics_latest.yaml
+get files* to modify
+YAML- cd /mnt/lustre/letscher/jsl1063/my_cesm_sandbox_invent/components/pop/externals/MARBL/defaults
+  *diagnostics_latest.yaml
   
 
-MARBL
-  marbl_interior_tendency_mod.F90
-  marbl_settings_mod.F90 - for photooxidation = 40 yr
-  marbl_interface_private_types.F90
-  marbl_init_mod.F90
-  marbl_diagnostics_mod.F90
-  
+MARBL- cd /mnt/lustre/letscher/jsl1063/my_cesm_sandbox_invent/components/pop/externals/MARBL/src
+  *marbl_interior_tendency_mod.F90
+  *marbl_settings_mod.F90 - for photooxidation = 40 yr
+  *marbl_interface_private_types.F90
+  *marbl_init_mod.F90
+  *marbl_diagnostics_mod.F90
+
+POP- cd /mnt/lustre/letscher/jsl1063/my_cesm_sandbox_invent/components/pop/source
+  *ecosys_forcing_mod.F90
+
+namelist- cd /mnt/lustre/letscher/jsl1063/my_cesm_sandbox_invent/components/pop/bld/namelist_files
+  *namelist_defaults_pop.xml
+  *namelist_definition_pop.xml
+  *build-namelist.txt - cd /mnt/lustre/letscher/jsl1063/my_cesm_sandbox_invent/components/pop/bld
+
+
 user_nl_pop_ventdoc_removal.x3Feinputs
-
-POP
-  ecosys_forcing_mod.F90
-
-namelist
-  namelist_defaults_pop.xml
-  namelist_definition_pop.xml
-  build-namelist.txt
-
 
