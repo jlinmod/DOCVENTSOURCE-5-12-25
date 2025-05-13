@@ -3976,7 +3976,7 @@ contains
     type(marbl_tracer_index_type)      , intent(in)    :: marbl_tracer_indices
     type(marbl_diagnostics_type)       , intent(inout) :: marbl_diags
     type(marbl_log_type)               , intent(inout) :: marbl_status_log
-    real(r8)                           , intent(in)    :: docventflux(:)          ! km
+    real(r8)                           , intent(in)    :: docventflux(km)          ! km
 
     !-----------------------------------------------------------------------
     !  local variables
