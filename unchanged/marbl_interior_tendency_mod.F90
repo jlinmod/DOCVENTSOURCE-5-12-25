@@ -2126,10 +2126,10 @@ contains
         if (k == 1) then
           do subcol_ind = 1, PAR_nsubcols
             if ((PAR_col_frac(subcol_ind) > c0) .and. (PAR_in(subcol_ind) > 1.0_r8)) then
-!              work = PAR_col_frac(subcol_ind) * (log(PAR_in(subcol_ind))*0.4373_r8) * (10.0e2_r8/dz1)
-              DOCr_reminR = DOMr_reminR_photo
-              DONr_reminR = DOMr_reminR_photo
-              DOPr_reminR = DOMr_reminR_photo
+              work = PAR_col_frac(subcol_ind) * (log(PAR_in(subcol_ind))*0.4373_r8) * (10.0e2_r8/dz1)
+              DOCr_reminR = DOCr_reminR + work * DOMr_reminR_photo
+              DONr_reminR = DONr_reminR + work * DOMr_reminR_photo
+              DOPr_reminR = DOPr_reminR + work * DOMr_reminR_photo
             endif
           end do
         endif
@@ -3566,9 +3566,9 @@ contains
         !  from sinking remin small fraction to refractory pool
         !-----------------------------------------------------------------------
 
-        interior_tendencies(doc_ind,k) = DOC_prod(k) * (c1 - DOCprod_refract) - DOC_remin(k) + docventflux(k)
+        interior_tendencies(doc_ind,k) = DOC_prod(k) * (c1 - DOCprod_refract) - DOC_remin(k) + docventflux(k)*0.9_r8
 
-        interior_tendencies(docr_ind,k) = DOC_prod(k) * DOCprod_refract - DOCr_remin(k) + (POC_remin(k) * POCremin_refract)
+        interior_tendencies(docr_ind,k) = DOC_prod(k) * DOCprod_refract - DOCr_remin(k) + (POC_remin(k) * POCremin_refract)+ docventflux(k)*0.1_r8
 
         interior_tendencies(don_ind,k) = (DON_prod(k) * (c1 - DONprod_refract)) - DON_remin(k)
 
